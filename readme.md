@@ -31,7 +31,7 @@ Follow these steps to boot the operating system.
 #### 1. Clone the Repository
 
 ```bash
-git https://github.com/nippun-live/riscvos.git
+git clone https://github.com/nippun-live/riscvos.git
 cd riscvos
 ```
 
