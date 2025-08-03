@@ -31,8 +31,8 @@ Follow these steps to boot the operating system.
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/[Your-Username]/[Your-Repo-Name].git
-cd [Your-Repo-Name]
+git https://github.com/nippun-live/riscvos.git
+cd riscvos
 ```
 
 #### 2. Launch the VM
