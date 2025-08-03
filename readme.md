@@ -6,43 +6,6 @@ Developed a UNIX-style operating system kernel and a robust journaling filesyste
 
 The source code for this project is not included in this public repository. This is to maintain academic integrity as the project was developed as part of a university curriculum. Recruiters or other interested parties are welcome to contact me directly to request a private viewing of the source code.
 
-## ✨ Technical Highlights
-
-This operating system implements several key features from the ground up, providing a practical understanding of OS design and implementation.
-
-### UNIX-style Kernel in C
-
-Implemented core OS functionalities including a bootloader, trap handling, Sv39 virtual memory with demand paging, and process abstraction. Supports essential user-mode syscalls (`open`, `close`, `read`, `write`, `ioctl`, `exec`, `fork`, `wait`, `usleep`, `fscreate`, `fsdelete`). Created cooperative and preemptive threading models using condition variables and timer (`mtime`) interrupts.
-
-### Custom Filesystem & Efficient Block Cache
-
-Engineered a block-based filesystem with a write-ahead journal for metadata consistency and robust crash recovery. Features support for create, read, write, delete, and flush operations with multi-level indirection. It is mountable via a VirtIO block device. An implemented write-back cache with configurable associativity significantly reduces I/O latency for both filesystem and block operations while ensuring data consistency through the journaling mechanism.
-
-### Preemptive Multitasking
-
-The kernel supports preemptive multitasking, allowing multiple threads to run concurrently.
-
-- A simple, preemptive scheduler manages context switching between threads.
-- Low-level context switching is handled in RISC-V assembly.
-- The system uses timer interrupts to preempt running threads.
-- Synchronization primitives, such as condition variables and locks, are provided for thread synchronization.
-
-### Memory Management
-
-A virtual memory system is in place, with both physical and virtual memory management.
-
-- The system uses Sv39 paging to provide each process with its own virtual address space via a three-level page table structure.
-- A buddy system-like allocator manages physical memory.
-- A simple heap allocator is implemented for dynamic memory allocation within the kernel.
-
-### Device Drivers & MMIO
-
-Developed drivers for UART (polling & interrupt-driven), Real-Time Clock (RTC), Platform-Level Interrupt Controller (PLIC), VirtIO block & RNG devices (with custom ISR integration), and GPIO/SPI interfaces for embedded peripherals.
-
-### Games & Application Support
-
-Built a unified I/O interface to load and execute ELF binaries from the filesystem. This has been validated by running classic games like Star Trek, Doom, Rogue, and Zork on the QEMU RISC-V target, with automated tests for correct loading, execution, and system-call handling.
-
 ## 🚀 Running the OS
 
 This project can be run on any Linux machine with the required prerequisites installed.
@@ -101,7 +64,42 @@ screen /dev/pts/0
 
 You should now have a direct, interactive terminal session with the running operating system.
 
-```
 
-Let me know if you'd like to link to specific sections, include badges, or generate a table of contents.
-```
+## ✨ Technical Highlights
+
+This operating system implements several key features from the ground up, providing a practical understanding of OS design and implementation.
+
+### UNIX-style Kernel in C
+
+Implemented core OS functionalities including a bootloader, trap handling, Sv39 virtual memory with demand paging, and process abstraction. Supports essential user-mode syscalls (`open`, `close`, `read`, `write`, `ioctl`, `exec`, `fork`, `wait`, `usleep`, `fscreate`, `fsdelete`). Created cooperative and preemptive threading models using condition variables and timer (`mtime`) interrupts.
+
+### Custom Filesystem & Efficient Block Cache
+
+Engineered a block-based filesystem with a write-ahead journal for metadata consistency and robust crash recovery. Features support for create, read, write, delete, and flush operations with multi-level indirection. It is mountable via a VirtIO block device. An implemented write-back cache with configurable associativity significantly reduces I/O latency for both filesystem and block operations while ensuring data consistency through the journaling mechanism.
+
+### Preemptive Multitasking
+
+The kernel supports preemptive multitasking, allowing multiple threads to run concurrently.
+
+- A simple, preemptive scheduler manages context switching between threads.
+- Low-level context switching is handled in RISC-V assembly.
+- The system uses timer interrupts to preempt running threads.
+- Synchronization primitives, such as condition variables and locks, are provided for thread synchronization.
+
+### Memory Management
+
+A virtual memory system is in place, with both physical and virtual memory management.
+
+- The system uses Sv39 paging to provide each process with its own virtual address space via a three-level page table structure.
+- A buddy system-like allocator manages physical memory.
+- A simple heap allocator is implemented for dynamic memory allocation within the kernel.
+
+### Device Drivers & MMIO
+
+Developed drivers for UART (polling & interrupt-driven), Real-Time Clock (RTC), Platform-Level Interrupt Controller (PLIC), VirtIO block & RNG devices (with custom ISR integration), and GPIO/SPI interfaces for embedded peripherals.
+
+### Games & Application Support
+
+Built a unified I/O interface to load and execute ELF binaries from the filesystem. This has been validated by running classic games like Star Trek, Doom, Rogue, and Zork on the QEMU RISC-V target, with automated tests for correct loading, execution, and system-call handling.
+
+
